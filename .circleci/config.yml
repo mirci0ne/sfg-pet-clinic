@@ -22,6 +22,7 @@ jobs:
 
     steps:
       - checkout
+      - parallelism: 4
 
       # Download and cache dependencies
       - restore_cache:
