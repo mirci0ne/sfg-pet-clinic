@@ -29,7 +29,6 @@ jobs:
             - v1-dependencies-{{ checksum "pom.xml" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - parallelism: 4
 
       - run: mvn install -DskipTests
 
@@ -41,4 +40,5 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
+      - parallelism: 4
       - run: mvn integration-test
