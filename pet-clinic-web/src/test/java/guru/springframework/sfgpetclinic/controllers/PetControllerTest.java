@@ -15,15 +15,17 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -114,16 +116,13 @@ public class PetControllerTest {
 
     @Test
     void populatePetTypes() {
-        //todo impl
+        when(petTypeService.findAll()).thenReturn(petTypes);
+        assertTrue(petTypeService.findAll().size() >= 1,"Size of findAll method is less than 1");
     }
 
     @Test
     void findOwner() {
-        //todo impl
-    }
-
-    @Test
-    void initOwnerBinder() {
-        //todo impl
+        when(petController.findOwner(1L)).thenReturn(owner);
+        assertEquals(1, (long) petController.findOwner(1L).getId());
     }
 }
