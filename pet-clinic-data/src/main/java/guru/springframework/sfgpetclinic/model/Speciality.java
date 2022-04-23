@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.model;
 
+
 import lombok.*;
 
 import javax.persistence.Column;
@@ -12,14 +13,9 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "types")
-public class PetType extends BaseEntity {
+@Table(name = "specialties")
+public class Speciality extends BaseEntity{
 
-    @Column(name = "name")
-    private String name;
-
-    @Override
-    public String toString() {
-        return name;
-    }
+    @Column(name = "description")
+    private String description;
 }
